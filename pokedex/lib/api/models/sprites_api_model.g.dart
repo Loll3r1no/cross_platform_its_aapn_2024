@@ -9,11 +9,11 @@ part of 'sprites_api_model.dart';
 _$SpritesApiModelImpl _$$SpritesApiModelImplFromJson(
         Map<String, dynamic> json) =>
     _$SpritesApiModelImpl(
-      front_defalut: json['front_defalut'] as String,
+      front_default: json['front_default'] as String,
     );
 
 Map<String, dynamic> _$$SpritesApiModelImplToJson(
         _$SpritesApiModelImpl instance) =>
     <String, dynamic>{
-      'front_defalut': instance.front_defalut,
+      'front_default': instance.front_default,
     };

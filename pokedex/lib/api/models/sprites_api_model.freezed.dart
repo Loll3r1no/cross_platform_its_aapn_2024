@@ -20,7 +20,7 @@ SpritesApiModel _$SpritesApiModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SpritesApiModel {
-  String get front_defalut => throw _privateConstructorUsedError;
+  String get front_default => throw _privateConstructorUsedError;
 
   /// Serializes this SpritesApiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,7 +38,7 @@ abstract class $SpritesApiModelCopyWith<$Res> {
           SpritesApiModel value, $Res Function(SpritesApiModel) then) =
       _$SpritesApiModelCopyWithImpl<$Res, SpritesApiModel>;
   @useResult
-  $Res call({String front_defalut});
+  $Res call({String front_default});
 }
 
 /// @nodoc
@@ -56,12 +56,12 @@ class _$SpritesApiModelCopyWithImpl<$Res, $Val extends SpritesApiModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? front_defalut = null,
+    Object? front_default = null,
   }) {
     return _then(_value.copyWith(
-      front_defalut: null == front_defalut
-          ? _value.front_defalut
-          : front_defalut // ignore: cast_nullable_to_non_nullable
+      front_default: null == front_default
+          ? _value.front_default
+          : front_default // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -75,7 +75,7 @@ abstract class _$$SpritesApiModelImplCopyWith<$Res>
       __$$SpritesApiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String front_defalut});
+  $Res call({String front_default});
 }
 
 /// @nodoc
@@ -91,12 +91,12 @@ class __$$SpritesApiModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? front_defalut = null,
+    Object? front_default = null,
   }) {
     return _then(_$SpritesApiModelImpl(
-      front_defalut: null == front_defalut
-          ? _value.front_defalut
-          : front_defalut // ignore: cast_nullable_to_non_nullable
+      front_default: null == front_default
+          ? _value.front_default
+          : front_default // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -107,17 +107,17 @@ class __$$SpritesApiModelImplCopyWithImpl<$Res>
 class _$SpritesApiModelImpl
     with DiagnosticableTreeMixin
     implements _SpritesApiModel {
-  const _$SpritesApiModelImpl({required this.front_defalut});
+  const _$SpritesApiModelImpl({required this.front_default});
 
   factory _$SpritesApiModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$SpritesApiModelImplFromJson(json);
 
   @override
-  final String front_defalut;
+  final String front_default;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SpritesApiModel(front_defalut: $front_defalut)';
+    return 'SpritesApiModel(front_default: $front_default)';
   }
 
   @override
@@ -125,7 +125,7 @@ class _$SpritesApiModelImpl
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'SpritesApiModel'))
-      ..add(DiagnosticsProperty('front_defalut', front_defalut));
+      ..add(DiagnosticsProperty('front_default', front_default));
   }
 
   @override
@@ -133,13 +133,13 @@ class _$SpritesApiModelImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SpritesApiModelImpl &&
-            (identical(other.front_defalut, front_defalut) ||
-                other.front_defalut == front_defalut));
+            (identical(other.front_default, front_default) ||
+                other.front_default == front_default));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, front_defalut);
+  int get hashCode => Object.hash(runtimeType, front_default);
 
   /// Create a copy of SpritesApiModel
   /// with the given fields replaced by the non-null parameter values.
@@ -159,14 +159,14 @@ class _$SpritesApiModelImpl
 }
 
 abstract class _SpritesApiModel implements SpritesApiModel {
-  const factory _SpritesApiModel({required final String front_defalut}) =
+  const factory _SpritesApiModel({required final String front_default}) =
       _$SpritesApiModelImpl;
 
   factory _SpritesApiModel.fromJson(Map<String, dynamic> json) =
       _$SpritesApiModelImpl.fromJson;
 
   @override
-  String get front_defalut;
+  String get front_default;
 
   /// Create a copy of SpritesApiModel
   /// with the given fields replaced by the non-null parameter values.
