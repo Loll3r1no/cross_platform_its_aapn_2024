@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:pokedex/api/poke_api.dart';
 import 'package:pokedex/src/models/pokemon_snippet_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -18,4 +19,13 @@ FutureOr<List<PokemonSnippetModel>> pokemonList(PokemonListRef ref) async {
     return PokemonSnippetModel(id: integer, name: value.name);
   });
   return [...models.nonNulls];
+}
+
+@protected
+@visibleForTesting
+int idFromUrl(String url) {
+  final split = url.split('/');
+  final [..., id, _] = split;
+  final integer = int.parse(id);
+  return integer;
 }
