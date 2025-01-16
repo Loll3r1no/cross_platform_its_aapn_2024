@@ -13,9 +13,7 @@ FutureOr<List<PokemonSnippetModel>> pokemonList(PokemonListRef ref) async {
   final api = ref.watch(pokemonApiProvider);
   final response = await api.list(page: page);
   final models = response.map((value) {
-    final split = value.url.split('/');
-    final [..., id, _] = split;
-    final integer = int.parse(id);
+    final integer = idFromUrl(value.url);
     return PokemonSnippetModel(id: integer, name: value.name);
   });
   return [...models.nonNulls];
