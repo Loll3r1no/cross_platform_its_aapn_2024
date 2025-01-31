@@ -1,3 +1,4 @@
+import 'package:countries_and_flags/src/models/country_model.dart';
 import 'package:countries_and_flags/src/pages/details_page.dart';
 import 'package:countries_and_flags/src/pages/favourites_page.dart';
 import 'package:countries_and_flags/src/pages/main_page.dart';
@@ -15,13 +16,14 @@ final router = GoRouter(
       name: 'main',
       builder: (context, state) => const MainPage(),
     ),
-    /*GoRoute(
-        path: '/detaiuls/:cca2',
-        name: 'details',
-        builder: (context, state) {
-          final cca2 = state.pathParameters['cca2'];
-          return DetailsPage(cca2: cca2!);
-        }),*/
+    GoRoute(
+      path: '/details',
+      name: 'details',
+      builder: (context, state) {
+        final country = state.extra! as CountryModel;
+        return DetailsPage(country: country);
+      },
+    ),
     GoRoute(
       path: '/favourites',
       name: 'favourites',

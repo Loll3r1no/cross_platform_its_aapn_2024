@@ -18,7 +18,7 @@ class FavouritesPage extends ConsumerWidget {
           for (final country in favourites)
             ListTile(
               leading: Text(country.cca2),
-              title: Text(country.name.official),
+              title: Text(country.name.common),
               trailing: IconButton(
                   onPressed: () {
                     ref

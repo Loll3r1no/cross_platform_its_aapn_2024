@@ -1,5 +1,4 @@
 import 'package:countries_and_flags/src/models/country_model.dart';
-import 'package:countries_and_flags/src/providers/countries_provider.dart';
 import 'package:countries_and_flags/src/providers/favourite_countries_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,17 +6,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class DetailsPage extends ConsumerWidget {
   const DetailsPage({
     super.key,
+    required this.country,
   });
+  final CountryModel country;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final favourites = ref.watch(favouriteCountriesProviderProvider);
+
     return Scaffold(
-      body: const Center(
-        child: Text('WIP'),
-      ),
-    );
-    /*return Scaffold(
       appBar: AppBar(
         title: const Text('Details'),
         actions: [
@@ -41,7 +38,7 @@ class DetailsPage extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           AspectRatio(
-            aspectRatio: 3 / 4,
+            aspectRatio: 16 / 9,
             child: Image.network(country.flags.png),
           ),
           Center(
@@ -49,6 +46,6 @@ class DetailsPage extends ConsumerWidget {
           )
         ],
       ),
-    );*/
+    );
   }
 }

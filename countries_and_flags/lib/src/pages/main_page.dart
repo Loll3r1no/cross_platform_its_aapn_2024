@@ -33,11 +33,12 @@ class MainPage extends ConsumerWidget {
           )
         ],
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(
-            child: ReactiveForm(
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            ReactiveForm(
               formGroup: form,
               child: ReactiveTextField<String>(
                   formControlName: 'country',
@@ -47,68 +48,69 @@ class MainPage extends ConsumerWidget {
                           .read(queryProviderProvider.notifier)
                           .update(control.value)),
             ),
-          ),
-          Expanded(
-            child: switch (countries) {
-              AsyncData(:final value) => GridView(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3),
-                  children: [
-                    for (final country in value)
-                      GridTile(
-                          child: Card(
-                        child: Stack(children: [
-                          Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                AspectRatio(
-                                    aspectRatio: 16 / 9,
-                                    child: Image.network(country.flags.png)),
-                                ElevatedButton(
-                                    onPressed: () {
-                                      context.pushNamed('details',
-                                          pathParameters: {
-                                            'cca2': country.cca2
-                                          });
-                                    },
-                                    child: Text(country.name.common))
-                              ]),
-                          Positioned(
-                              right: 2,
-                              top: 2,
-                              child: IconButton(
-                                onPressed: () {
-                                  favourites.contains(country) == true
-                                      ? ref
-                                          .read(
-                                              favouriteCountriesProviderProvider
-                                                  .notifier)
-                                          .remove(country)
-                                      : ref
-                                          .read(
-                                              favouriteCountriesProviderProvider
-                                                  .notifier)
-                                          .add(country);
-                                },
-                                icon: favourites.contains(country) == true
-                                    ? const Icon(Icons.favorite)
-                                    : const Icon(Icons.favorite_border),
-                              )),
-                        ]),
-                      ))
-                  ],
-                ),
-              AsyncLoading() => const Center(
-                  child: CircularProgressIndicator(),
-                ),
-              AsyncError() => const Center(
-                  child: Text('Spiase'),
-                ),
-              // TODO: Handle this case.
-              AsyncValue<List<CountryModel>>() => throw UnimplementedError(),
-            },
-          ),
-        ],
+            Expanded(
+              child: switch (countries) {
+                AsyncData(:final value) => GridView(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3),
+                    children: [
+                      for (final country in value)
+                        GridTile(
+                            child: Card(
+                          child: Stack(children: [
+                            Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  AspectRatio(
+                                      aspectRatio: 16 / 9,
+                                      child: Image.network(country.flags.png)),
+                                  ElevatedButton(
+                                      onPressed: () {
+                                        context.pushNamed(
+                                          'details',
+                                          extra: country,
+                                        );
+                                      },
+                                      child: Text(country.name.common))
+                                ]),
+                            Positioned(
+                                right: 2,
+                                top: 2,
+                                child: IconButton(
+                                  onPressed: () {
+                                    favourites.contains(country) == true
+                                        ? ref
+                                            .read(
+                                                favouriteCountriesProviderProvider
+                                                    .notifier)
+                                            .remove(country)
+                                        : ref
+                                            .read(
+                                                favouriteCountriesProviderProvider
+                                                    .notifier)
+                                            .add(country);
+                                  },
+                                  icon: favourites.contains(country) == true
+                                      ? const Icon(Icons.favorite)
+                                      : const Icon(Icons.favorite_border),
+                                )),
+                          ]),
+                        ))
+                    ],
+                  ),
+                AsyncLoading() => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                AsyncError() => const Center(
+                    child: Text('Spiase'),
+                  ),
+                // TODO: Handle this case.
+                AsyncValue<List<CountryModel>>() => throw UnimplementedError(),
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
