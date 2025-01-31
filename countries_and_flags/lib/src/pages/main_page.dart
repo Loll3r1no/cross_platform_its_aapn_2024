@@ -4,6 +4,7 @@ import 'package:countries_and_flags/src/providers/favourite_countries_provider.d
 import 'package:countries_and_flags/src/providers/query_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class MainPage extends ConsumerWidget {
@@ -24,8 +25,11 @@ class MainPage extends ConsumerWidget {
         actions: [
           Badge.count(
             count: favourites.length,
-            child:
-                IconButton(onPressed: () {}, icon: const Icon(Icons.favorite)),
+            child: IconButton(
+                onPressed: () {
+                  context.pushNamed('favourites');
+                },
+                icon: const Icon(Icons.favorite)),
           )
         ],
       ),
@@ -60,7 +64,14 @@ class MainPage extends ConsumerWidget {
                                 AspectRatio(
                                     aspectRatio: 16 / 9,
                                     child: Image.network(country.flags.png)),
-                                Text(country.name.common)
+                                ElevatedButton(
+                                    onPressed: () {
+                                      context.pushNamed('details',
+                                          pathParameters: {
+                                            'cca2': country.cca2
+                                          });
+                                    },
+                                    child: Text(country.name.common))
                               ]),
                           Positioned(
                               right: 2,
