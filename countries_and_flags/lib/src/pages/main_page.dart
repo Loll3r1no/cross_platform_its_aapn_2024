@@ -14,7 +14,9 @@ class MainPage extends ConsumerWidget {
     final countries = ref.watch(countriesProviderProvider);
     final favourites = ref.watch(favouriteCountriesProviderProvider);
     final query = ref.watch(queryProviderProvider);
-    final form = FormGroup({'country': FormControl<String>(value: '')});
+    final form = FormGroup({
+      'country': FormControl<String>(value: ''),
+    });
 
     return Scaffold(
       appBar: AppBar(

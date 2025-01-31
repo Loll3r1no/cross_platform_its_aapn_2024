@@ -23,7 +23,7 @@ class CountriesApi {
   }
 
   Future<List<CountryApiModel>> search(String country) async {
-    final response = await client.get('name/:$country?fields=name,flags,cca2');
+    final response = await client.get('name/$country?fields=name,flags,cca2');
     return [
       for (final country in response.data) CountryApiModel.fromJson(country)
     ];
